@@ -1,1 +1,3 @@
+useDynLib(boxspline1, boxspline_)
+useDynLib(boxspline1, boxspline_base_)
 exportPattern("^[^\\.]")
