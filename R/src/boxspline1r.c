@@ -4,33 +4,33 @@
 #include <Rmath.h>
 
 
-SEXP boxspline_(SEXP s_, SEXP v_, SEXP x_, SEXP dx_) {
+SEXP boxspline_(SEXP s_, SEXP v_, SEXP x_, SEXP lim_) {
   int n = length(v_);
   double * v = REAL(v_);
   int k = length(s_);
   double * s = REAL(s_);
   int m = length(x_);
   double * x = REAL(x_);
-  double dx = REAL(dx_)[0];
+  double * lim = REAL(lim_);
   int i;
   double *res;
   SEXP res_;
   
   PROTECT(res_ = allocVector(REALSXP, m));
   res = REAL(res_);
-  for (int i = 0; i<m; i++) res[i] = bs1_tab(s,k,v,n,0,1,x[i],0);
+  for (int i = 0; i<m; i++) res[i] = bs1_tab(s,k,v,n,lim[0],lim[1],x[i],0);
   UNPROTECT(1);
   
   return res_;
 }
 
-SEXP boxspline_base_(SEXP s_, SEXP n_, SEXP x_, SEXP dx_) {
+SEXP boxspline_base_(SEXP s_, SEXP n_, SEXP x_, SEXP lim_) {
   int n = INTEGER(n_)[0];
   int k = length(s_);
   double * s = REAL(s_);
   int m = length(x_);
   double * x = REAL(x_);
-  double dx = REAL(dx_)[0];
+  double * lim = REAL(lim_);
   int i;
   double *res;
   SEXP res_;
@@ -44,7 +44,7 @@ SEXP boxspline_base_(SEXP s_, SEXP n_, SEXP x_, SEXP dx_) {
   setAttrib(res_, R_DimSymbol, dim_);
   UNPROTECT(1);
   res = REAL(res_);
-  for (int i = 0; i<m; i++) bs1_design(s,k,n,0,1,x[i],0,&res[i*n]);
+  for (int i = 0; i<m; i++) bs1_design(s,k,n,lim[0],lim[1],x[i],0,&res[i*n]);
   UNPROTECT(1);
   return res_;
 }
