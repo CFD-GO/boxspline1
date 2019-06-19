@@ -3,7 +3,6 @@
 #include <Rinternals.h>
 #include <Rmath.h>
 
-
 SEXP boxspline_(SEXP s_, SEXP v_, SEXP x_, SEXP lim_) {
   int n = length(v_);
   double * v = REAL(v_);

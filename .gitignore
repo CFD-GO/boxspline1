@@ -52,3 +52,10 @@ Mkfile.old
 dkms.conf
 
 *~
+.Rproj.user
+.Rhistory
+example/main
+example/out.csv
+*.Rproj
+html/
+latex/
