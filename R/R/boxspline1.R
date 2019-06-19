@@ -41,8 +41,10 @@
 #' y = boxspline1(x, Y, s=c(0.3,0.1))
 #' lines(x, y, type="l", col=3)
 #' 
+#' @useDynLib boxspline1 boxspline_
+#' @useDynLib boxspline1 boxspline_base_
 #' @export
-boxspline1 = function(x, Y, df, s, order, lim=range(x), periodic=FALSE, extend=TRUE) {
+boxspline1 = function(x, Y, df, s, order, lim=range(x)) {
   if (missing(x)) stop("Provide the x values")
   
   if (missing(Y)) {
