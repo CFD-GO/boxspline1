@@ -1,10 +1,15 @@
 #include "boxspline1.h"
 
 /**
- * @brief Function for evaluating base 1D box-spline
+ * @brief Function for evaluating base 1D monotonic box-spline
  *
- * This function evaluates a single 1D box-spline in a single point
+ * This function evaluates a single 1D monotonic box-spline in a single point
  * It is a utility function, and is rarely used on it's own.
+ * 
+ * For k=0 (s={}) and i=0 it's the Heaviside step function
+ * For k=0 (s={}) it is the (-i)-th integral of the Heaviside step function
+ * For k>0 and i=0 it's the Heaviside step function, k-times convoluted with an interval kernel 
+ * 
  * @code
  * double s[2] = {0.1, 0.1};
  * printf("Value: %lg\n", bs1_base(s,k,3.14,0);
