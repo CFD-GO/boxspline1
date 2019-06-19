@@ -8,8 +8,12 @@
   extern "C" {
 #endif
 
+#define BS1_PERIODIC 0x01
+#define BS1_NOEXTEND 0x02
+    
 double bs1_base(double s[], int k, double x, int i);
-double bs1_tab(double s[], int k, double x, double dx, double val[], int n, int d);
+double bs1_tab (double s[], int k, double val[], int n, double a, double b, double x, int d);
+void bs1_design (double s[], int k, int n, double a, double b, double x, int d, double ret[]);
 
 #ifdef __cplusplus
   } // extern "C"
