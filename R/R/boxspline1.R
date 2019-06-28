@@ -7,8 +7,10 @@
 #' @param Y (optional) the coeficients
 #' @param df number of degrees of freedom
 #' @param s the lengths of convolution intervals
-#' @param order the order of the spline (equivalent to length(s))
+#' @param order the order of the spline (have to be higher or equal to length(s))
 #' @param lim the range in which the box-spline is constructed (default: range(x))
+#' @param periodic if TRUE, a periodic box-spline will be generated (default: FALSE)
+#' @param derivative the order of derivative of the spline to evaluate (default: 0)
 #'
 #' @return If Y coeficients are provided then box-spline is returned. If not, a matrix of base spline functions is returned.
 #'

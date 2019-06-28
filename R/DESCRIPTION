@@ -2,7 +2,7 @@ Package: boxspline1
 Title: Package for 1D box-splines
 Version: 0.0.0.9000
 Authors@R: person("Lukasz", "Laniewski-Wollk", , "llaniewski@meil.pw.edu.pl", role = c("aut", "cre"))
-Description: Package for evaluation of 1D box-splines used for limiting derivatives
+Description: Package for evaluation of 1D box-splines used for limiting derivatives.
 Depends: R (>= 3.0.0)
-License: GPLv3
+License: GPL-3
 LazyData: true

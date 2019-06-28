@@ -4,7 +4,8 @@
 \alias{boxspline1}
 \title{Calculate 1D box-spline}
 \usage{
-boxspline1(x, Y, df, s, order, lim = range(x))
+boxspline1(x, Y, df, s, order, lim = range(x), derivative = 0,
+  periodic = FALSE)
 }
 \arguments{
 \item{x}{values at which to evaluate the splines}
@@ -15,9 +16,13 @@ boxspline1(x, Y, df, s, order, lim = range(x))
 
 \item{s}{the lengths of convolution intervals}
 
-\item{order}{the order of the spline (equivalent to length(s))}
+\item{order}{the order of the spline (have to be higher or equal to length(s))}
 
 \item{lim}{the range in which the box-spline is constructed (default: range(x))}
+
+\item{derivative}{the order of derivative of the spline to evaluate (default: 0)}
+
+\item{periodic}{if TRUE, a periodic box-spline will be generated (default: FALSE)}
 }
 \value{
 If Y coeficients are provided then box-spline is returned. If not, a matrix of base spline functions is returned.
@@ -26,8 +31,9 @@ If Y coeficients are provided then box-spline is returned. If not, a matrix of b
 Calculates the 1D box-spline base functions, or interpolation.
 }
 \examples{
-x = seq(0,1,len=100)
+x = seq(0,1,len=300)
 y = boxspline1(x)
+
 matplot(x, y, type="l", lty=1, ylim=c(0,1))
 y = boxspline1(x, df=10, order=2)
 matplot(x, y, type="l", lty=1, ylim=c(0,1), col=rainbow(10))
@@ -35,23 +41,23 @@ y = boxspline1(x, df=10, s=c(0.1,0.3))
 matplot(x, y, type="l", lty=1, ylim=c(0,1), col=rainbow(10))
 
 Y = rnorm(10)
-y = boxspline1(x, Y, order=0)
+y = boxspline1(x, Y, order=0, periodic=TRUE)
 plot(x, y, type="l")
-y = boxspline1(x, Y, order=1)
+y = boxspline1(x, Y, order=1, periodic=TRUE)
 lines(x, y, type="l", col=2)
-y = boxspline1(x, Y, order=2)
+y = boxspline1(x, Y, order=2, periodic=TRUE)
 lines(x, y, type="l", col=3)
-y = boxspline1(x, Y, order=3)
+y = boxspline1(x, Y, order=3, periodic=TRUE)
 lines(x, y, type="l", col=4)
 
 Y = rnorm(10)
-y = boxspline1(x, Y, order=1)
+y = boxspline1(x, Y, order=1, periodic=TRUE)
 plot(x, y, type="l",lty=2)
-y = boxspline1(x, Y, s=c(0.1,0.1))
+y = boxspline1(x, Y, s=c(0.1,0.1), periodic=TRUE)
 lines(x, y, type="l", col=1)
-y = boxspline1(x, Y, s=c(0.2,0.1))
+y = boxspline1(x, Y, s=c(0.2,0.1), periodic=TRUE)
 lines(x, y, type="l", col=2)
-y = boxspline1(x, Y, s=c(0.3,0.1))
+y = boxspline1(x, Y, s=c(0.3,0.1), periodic=TRUE)
 lines(x, y, type="l", col=3)
 }
 
